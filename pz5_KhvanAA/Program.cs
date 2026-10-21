@@ -25,6 +25,9 @@ namespace pz5_KhvanAA
 			Console.Write("Введите фамилию пользователя: ");
 			string userFamilyName = Console.ReadLine();
 
+			Console.Write("Введите номер телефона: ");
+			string userPhoneInput = Console.ReadLine();
+
 			Console.Write("Введите логин пользователя: ");
 			string userAccountLogin = Console.ReadLine();
 
@@ -36,23 +39,32 @@ namespace pz5_KhvanAA
 
 			using (TelecomServicesDBEntities databaseInstance = new TelecomServicesDBEntities())
 			{
-				Users registeredClientAccount = new Users
+				Users registeredAccount = new Users
 				{
-
 					Login = userAccountLogin,
 					PasswordHash = encryptedPasswordValue,
-					RoleID = 1,
-					RegistrationDate = DateTime.Now, 
+					RoleID = 1,        
+					RegistrationDate = DateTime.Now,
 					IsActive = true
 				};
 
-				databaseInstance.Users.Add(registeredClientAccount);
+				Clients newClientProfile = new Clients
+				{
+					FirstName = userGivenName,
+					LastName = userFamilyName,
+					PhoneNumber = userPhoneInput,
+					Users = registeredAccount
+				};
+
+				databaseInstance.Clients.Add(newClientProfile);
 				databaseInstance.SaveChanges();
 			}
 
 			Console.WriteLine("Учетная запись добавлена");
 			Console.ReadLine();
 		}
-	}
+
+	}	
 }
+
 

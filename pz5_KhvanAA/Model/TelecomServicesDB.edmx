@@ -33,10 +33,10 @@
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PassportData" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PassportData" Type="nvarchar" MaxLength="20" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" />
-          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Equipment">
           <Key>
@@ -325,10 +325,10 @@
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PassportData" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassportData" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Accounts" Relationship="Self.FK__Accounts__Client__3C69FB99" FromRole="Clients" ToRole="Accounts" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Clients__UserID__4222D4EF" FromRole="Clients" ToRole="Users" />
           <NavigationProperty Name="ServiceRequests" Relationship="Self.FK__ServiceRe__Clien__45F365D3" FromRole="Clients" ToRole="ServiceRequests" />
