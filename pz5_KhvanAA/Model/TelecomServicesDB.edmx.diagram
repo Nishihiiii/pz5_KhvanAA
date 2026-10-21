@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e05b1b4a67cd48c7bb3a0faf34b58ddd" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="TelecomServicesDBModel.Accounts" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomServicesDBModel.ActiveClientServices" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomServicesDBModel.Clients" Width="1.5" PointX="1.625" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomServicesDBModel.Equipment" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomServicesDBModel.Payments" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomServicesDBModel.Roles" Width="1.5" PointX="1.625" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomServicesDBModel.ServiceRequests" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomServicesDBModel.Services" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomServicesDBModel.ServiceUsages" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomServicesDBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TelecomServicesDBModel.Users" Width="1.5" PointX="1.625" PointY="13.625" IsExpanded="true" />
+        <AssociationConnector Association="TelecomServicesDBModel.FK__Accounts__Client__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomServicesDBModel.FK__ActiveCli__Accou__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomServicesDBModel.FK__Payments__Accoun__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomServicesDBModel.FK__ActiveCli__Equip__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomServicesDBModel.FK__ActiveCli__Servi__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomServicesDBModel.FK__ServiceUs__Clien__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomServicesDBModel.FK__Clients__UserID__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomServicesDBModel.FK__ServiceRe__Clien__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomServicesDBModel.FK__Users__RoleID__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="TelecomServicesDBModel.FK__ServiceRe__Servi__46E78A0C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
