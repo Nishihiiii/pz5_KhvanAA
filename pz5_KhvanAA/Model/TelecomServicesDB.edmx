@@ -47,6 +47,14 @@
           <Property Name="EquipmentType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModelName" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="EquipmentType">
+          <Key>
+            <PropertyRef Name="EquipmentTypeID" />
+          </Key>
+          <Property Name="EquipmentTypeID" Type="int" Nullable="false" />
+          <Property Name="Name_EquipmentType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
         <EntityType Name="Payments">
           <Key>
             <PropertyRef Name="PaymentID" />
@@ -91,6 +99,13 @@
           <Property Name="UsageDate" Type="datetime" Nullable="false" />
           <Property Name="UnitsConsumed" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="BilledAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="NameStatus" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -185,30 +200,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ServiceRe__Clien__45F365D3">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
-          <End Role="ServiceRequests" Type="Self.ServiceRequests" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clients">
-              <PropertyRef Name="ClientID" />
-            </Principal>
-            <Dependent Role="ServiceRequests">
-              <PropertyRef Name="ClientID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ServiceRe__Servi__46E78A0C">
-          <End Role="Services" Type="Self.Services" Multiplicity="1" />
-          <End Role="ServiceRequests" Type="Self.ServiceRequests" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Services">
-              <PropertyRef Name="ServiceID" />
-            </Principal>
-            <Dependent Role="ServiceRequests">
-              <PropertyRef Name="ServiceID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ServiceUs__Clien__5535A963">
           <End Role="ActiveClientServices" Type="Self.ActiveClientServices" Multiplicity="1" />
           <End Role="ServiceUsages" Type="Self.ServiceUsages" Multiplicity="*" />
@@ -238,11 +229,13 @@
           <EntitySet Name="ActiveClientServices" EntityType="Self.ActiveClientServices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentType" EntityType="Self.EquipmentType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceRequests" EntityType="Self.ServiceRequests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceUsages" EntityType="Self.ServiceUsages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Accounts__Client__3C69FB99" Association="Self.FK__Accounts__Client__3C69FB99">
@@ -268,14 +261,6 @@
           <AssociationSet Name="FK__Payments__Accoun__5165187F" Association="Self.FK__Payments__Accoun__5165187F">
             <End Role="Accounts" EntitySet="Accounts" />
             <End Role="Payments" EntitySet="Payments" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ServiceRe__Clien__45F365D3" Association="Self.FK__ServiceRe__Clien__45F365D3">
-            <End Role="Clients" EntitySet="Clients" />
-            <End Role="ServiceRequests" EntitySet="ServiceRequests" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ServiceRe__Servi__46E78A0C" Association="Self.FK__ServiceRe__Servi__46E78A0C">
-            <End Role="Services" EntitySet="Services" />
-            <End Role="ServiceRequests" EntitySet="ServiceRequests" />
           </AssociationSet>
           <AssociationSet Name="FK__ServiceUs__Clien__5535A963" Association="Self.FK__ServiceUs__Clien__5535A963">
             <End Role="ActiveClientServices" EntitySet="ActiveClientServices" />
@@ -590,7 +575,24 @@
             <End Role="Services" EntitySet="Services" />
             <End Role="ServiceRequests" EntitySet="ServiceRequests" />
           </AssociationSet>
+          <EntitySet Name="EquipmentType" EntityType="TelecomServicesDBModel.EquipmentType" />
+          <EntitySet Name="Status" EntityType="TelecomServicesDBModel.Status" />
         </EntityContainer>
+        <EntityType Name="EquipmentType">
+          <Key>
+            <PropertyRef Name="EquipmentTypeID" />
+          </Key>
+          <Property Name="EquipmentTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Name_EquipmentType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="NameStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -713,6 +715,23 @@
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentType">
+            <EntityTypeMapping TypeName="TelecomServicesDBModel.EquipmentType">
+              <MappingFragment StoreEntitySet="EquipmentType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name_EquipmentType" ColumnName="Name_EquipmentType" />
+                <ScalarProperty Name="EquipmentTypeID" ColumnName="EquipmentTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="TelecomServicesDBModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="NameStatus" ColumnName="NameStatus" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
